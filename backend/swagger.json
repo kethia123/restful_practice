@@ -1,0 +1,419 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation vehicle tracking API",
+        "version": "1.0.0",
+        "title": "Vehicle tracking APIs",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "kemykayigire@gmail.com",
+            "name": "Kayigire Kethia"
+        },
+        "licence": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "user operations"
+        },
+        {
+            "name": "Owner",
+            "description": "Owner operations"
+        },
+        {
+            "name": "Vehicle",
+            "description": "Vehicle operations"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register admin",
+                "description": "Register admin",
+                "operationId": "registerAdmin",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Admin object",
+                        "required": true,
+                        "properties": {
+                            "names": {
+                                "type": "string",
+                                "example": "kethia"
+                            },
+                            "phone": {
+                                "type": "string",
+                                "example": "0785143733"
+                            },
+                            "email": {
+                                "type": "string",
+                                "example": "kemykayigire@gmail.com"
+                            },
+                            "password": {
+                                "type": "string"
+                            },
+                            "nationalId": {
+                                "type": "string",
+                                "example": "1199999999999999"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login user",
+                "description": "Login user",
+                "operationId": "loginUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object",
+                        "required": true,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "example": "kemykayigire@gmail.com"
+                            },
+                            "password": {
+                                "type": "string",
+                                "example": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/user/current": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get current user",
+                "description": "Get the current user",
+                "operationId": "getCurrentUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/user/getAllUsers": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get all users",
+                "description": "Get all existing users",
+                "operationId": "getAllUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/user/updateUser": {
+            "put": {
+              "tags": [
+                "User"
+              ],
+              "summary": "Update user",
+              "description": "Update a specific user by ID",
+              "operationId": "updateUser",
+              "parameters": [
+                {
+                  "name": "userId",
+                  "in": "path",
+                  "description": "ID of the user to update",
+                  "required": true,
+                  "schema": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "name": "user",
+                  "in": "body",
+                  "description": "Updated user object",
+                  "required": true,
+                  "schema": {
+                    "properties": {
+                        "names": {
+                            "type": "string",
+                            "example": "kethia"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "example": "0785143733"
+                        },
+                        "email": {
+                            "type": "string",
+                            "example": "kemykayigire@gmail.com"
+                        },
+                        "password": {
+                            "type": "string"
+                        },
+                        "nationalId": {
+                            "type": "string",
+                            "example": "1199999999999999"
+                        }
+                    }
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "User updated successfully"
+                },
+                "400": {
+                  "description": "Invalid input"
+                },
+                "404": {
+                  "description": "User not found"
+                }
+              }
+            }
+        },
+        "/carOwners/{id}": {
+            "post": {
+                "tags": [
+                    "Owner"
+                ],
+                "summary": "Register owner",
+                "description": "Register owner",
+                "operationId": "registerOwner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Owner object",
+                        "required": true,
+                        "properties": {
+                            "names": {
+                                "type": "string",
+                                "example": "mugisha dave"
+                            },
+                            "phoneNumber": {
+                                "type": "string",
+                                "example": "0788781096"
+                            },
+                            "nationalID": {
+                                "type": "string",
+                                "example": "1199999999999998"
+                            },
+                            "address": {
+                                "type": "string",
+                                "example": "Kigali"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/carOwners": {
+            "get": {
+                "tags": [
+                    "Owner"
+                ],
+                "summary": "Get all owners",
+                "description": "Get all owners",
+                "operationId": "getAllOwners",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicle": {
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Add vehicle",
+                "description": "Add vehicle",
+                "operationId": "addVehicle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Vehicle object",
+                        "required": true,
+                        "properties": {
+                            "manufactureCompany": {
+                                "type": "string",
+                                "example": "Toyota"
+                            },
+                            "manufactureYear": {
+                                "type": "string",
+                                "example": "2019"
+                            },
+                            "price": {
+                                "type": "string",
+                                "example": "13 million Rwf"
+                            },
+                            "modelName": {
+                                "type": "string",
+                                "example": "Toyota RAV4"
+                            },
+                            "owner": {
+                                "type": "string",
+                                "example": "645a59784c81ba5d9eb33d83"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/v1/vehicle/{page}/{perPage}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get all vehicles",
+                "description": "Get all vehicles",
+                "operationId": "getAllVehicles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "page",
+                        "description": "page number",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "in": "path",
+                        "name": "perPage",
+                        "description": "number of items per page",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "security": [
+        {
+            "Bearer": []
+        }
+    ]
+}
