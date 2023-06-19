@@ -25,8 +25,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Router>
           <Routes>
             <Route path="/" element={<DashboardLayout children={<Dashboard />} />} />
-            <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
             <Route path="carOwners" element={<DashboardLayout children={<CarOwners />} />} />
             <Route path="vehicles" element={<DashboardLayout children={<Vehicles />} />} />
             <Route path="*" element={<NotFound />} />

@@ -48,8 +48,8 @@ function SignUp() {
   };
 
   return (
-    <div className="bg-primary h-screen flex justify-center overflow-y-auto">
-      <div className="form bg-main flex max-w-md w-screen h-max justify-center p-8 m-auto">
+    <div className="bg-primary h-screen flex justify-center overflow-y-auto ">
+      <div className="form bg-main flex max-w-md w-screen h-max justify-center p-8 m-7 ">
         <form>
           {/* <img src={logo} className="mb-9 mx-auto" alt="" /> */}
           <div className="title mb-8">Signup</div>
